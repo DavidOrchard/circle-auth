@@ -26,3 +26,48 @@ You can start editing the page by modifying `pages/index.tsx`. The page auto-upd
 The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+# Requirements
+
+Build an auth.
+
+barebones
+
+Build signin landing usernane/password.
+(type=password).
+encrypted naturally.
+
+signout
+
+Out of scope reset password, expiry.
+
+Landing page with banner sign in, sign up, sign out to keep simple.
+
+endpoints left out.  Can use session to handshake, or encrypted.  We can leave out.
+
+# system design
+
+Session Provider in _app.tsx.
+
+No preferences for particular components like Chakra, Tailwind.
+
+
+# components
+
+3 pages
+
+Landing
+Sign in
+Sign up
+
+Landing page will refer to Context for state.
+
+# api
+
+Jest tests
+
+# questions
+
+What does api actually do wrt cookie, and what's in the cookie, and how do you know is valid.
+
+

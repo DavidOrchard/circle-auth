@@ -1,11 +1,8 @@
 import axios from 'axios'
 import Head from 'next/head'
-import Link from 'next/link'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import useSWR from 'swr'
-import {SessionContext} from 'src/components/sessionContext';
-import { useContext } from 'react'
 
 const inter = Inter({ subsets: ['latin'] })
 const fetcher = (url: string) => axios.get(url).then(res => res.data)
@@ -13,8 +10,6 @@ const fetcher = (url: string) => axios.get(url).then(res => res.data)
 export default function Home() {
   const { data, error, isLoading } = useSWR('api/users', fetcher)
   console.log(data)
-  const sessionValue = useContext(SessionContext);
-
   return (
     <>
       <Head>
@@ -23,8 +18,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-        <div>Context{JSON.stringify(sessionValue)}</div>
-        <div><Link href="/signin">Signin</Link></div>
+      <main className={styles.main}>
+      </main>
     </>
   )
 }

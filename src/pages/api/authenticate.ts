@@ -14,19 +14,21 @@ export default async function handler(
 ) {
   switch (req.method) {
     case "POST":
-      const user = await prisma.user.findFirst({
-        where: {
-          email: req.body.email,
-        },
-      });
-      if (user) {
-        const result = await bcrypt.compare(req.body.password, user.password);
+      // const user = await prisma.user.findFirst({
+      //   where: {
+      //     email: req.body.email,
+      //   },
+      // });
+      // if (user) {
+        const result = "authedAndAwesome"; // await bcrypt.compare(req.body.password, user.password);
+        res.setHeader("set-cookie", `dave=${result}; path=/; samesite=stric; httponly;`)
+
         res.status(200).json({
-          success: result,
+          success: !!result,
         });
         return;
-      }
-      res.status(400).end(`User with email ${req.body.email} not found`);
+      // }
+      // res.status(400).end(`User with email ${req.body.email} not found`);
       break;
     default:
       res.setHeader("Allow", ["POST"]);
