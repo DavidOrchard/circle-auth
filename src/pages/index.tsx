@@ -12,7 +12,7 @@ const fetcher = (url: string) => axios.get(url).then(res => res.data)
 
 export default function Home() {
   const { data, error, isLoading } = useSWR('api/users', fetcher)
-  console.log(data)
+  console.log("data", data)
   const sessionValue = useContext(SessionContext);
 
   return (
@@ -25,6 +25,8 @@ export default function Home() {
       </Head>
         <div>Context{JSON.stringify(sessionValue)}</div>
         <div><Link href="/signin">Signin</Link></div>
+        <div><Link href="/signup">Sign Up</Link></div>
+
     </>
   )
 }

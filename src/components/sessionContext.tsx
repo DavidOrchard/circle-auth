@@ -1,14 +1,14 @@
 import React, { createContext, useState } from 'react';
 export type SessionType = {
-    session: Record<string,any>;
-    setSession: React.Dispatch<React.SetStateAction<{ session: {}; }>>;
+    session: boolean;
+    setSession: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const SessionContext = createContext({session:{}, setSession: () => {return true}});
-
+export const SessionContext = createContext({session:false, setSession: (session:boolean) => {return true}});
+//@ts-ignore
 export const SessionProvider = ({ children }) => {
-    const [session, setSession] = useState({session:{}})
-    const value={session,setSession};
+    const [session, setSession] = useState(false)
+    const value:SessionType = {session,setSession};
     return (
       //@ts-ignore
       <SessionContext.Provider value={value}>
